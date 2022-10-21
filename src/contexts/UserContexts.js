@@ -10,20 +10,24 @@ const UserContexts = ({children}) => {
 
     const [user,setUser]=useState(null);
     const [loading,setLoading]=useState(true);
+    
 
     //create signup/register authentication
     const createSignupUser=(email,password)=>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth,email,password)
     }
 
     //create login/sign in authentication
     const createLoginUser=(email,password)=>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth,email,password)
     }
 
 
     //create logOUt in authentication
     const logOut=()=>{
+        setLoading(true);
         return signOut(auth)
     }
 
@@ -31,7 +35,7 @@ const UserContexts = ({children}) => {
     useEffect(()=>{
         const unscribe=onAuthStateChanged(auth, currentUser=>{
             setUser(currentUser);
-            setLoading(true)
+            setLoading(false);
             // console.log('state changed',currentUser)
         })
         return ()=>{

@@ -7,7 +7,7 @@ import './Header.css';
 
 
 const Header = () => {
-    const {user,logOut,loading}=useContext(AuthContext);
+    const {user,logOut}=useContext(AuthContext);
     console.log(user?.email)
     
     return (
